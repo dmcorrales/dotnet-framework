@@ -1,0 +1,105 @@
+﻿@model CRUD_MVC.Models.FACTURAS
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Añadir nueva factura  @Url.RequestContext.RouteData.Values["id"]</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="col-md-20">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NumeroFactura, htmlAttributes: new { @class = "control-label col-md-6" })
+                    @Html.EditorFor(model => model.NumeroFactura, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NumeroFactura, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-6" })
+                    @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                    @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NombreCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.NombreCliente, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NombreCliente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DocumentoCliente, htmlAttributes: new { @class = "control-label col-md-6" })
+                    @Html.EditorFor(model => model.DocumentoCliente, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DocumentoCliente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TipoDePago, htmlAttributes: new { @class = "control-label col-md-6" })
+                @Html.EditorFor(model => model.TipoDePago, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TipoDePago, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Descuento, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.Descuento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descuento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+       <div class="col-sm-6">
+           <div class="form-group">
+
+               @Html.LabelFor(model => model.IVA, htmlAttributes: new { @class = "control-label col-md-2" })
+               @Html.EditorFor(model => model.IVA, new { htmlAttributes = new { @class = "form-control" } })
+               @Html.ValidationMessageFor(model => model.IVA, "", new { @class = "text-danger" })
+           </div>
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear factura" class="btn btn-primary active" />
+
+                <input type="button" value="Volver a la lista" class="btn btn-warning active" onclick="location.href='@Url.Action("Index", "FACTURAS")'" />
+
+            </div>
+        </div>
+    </div>
+    }
+
+ 
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

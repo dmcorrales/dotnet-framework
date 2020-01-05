@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CRUD_MVC.Models.DETALLES>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioUnitario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FACTURAS.TipoDePago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODUCTOS.Producto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioUnitario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FACTURAS.TipoDePago)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRODUCTOS.Producto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idDetalle }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idDetalle }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idDetalle })
+        </td>
+    </tr>
+}
+
+</table>

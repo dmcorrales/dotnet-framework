@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CRUD_MVC.Models.FACTURAS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Facturas</h2>
+
+<p>
+ 
+    <input type="button" value="Crear nueva factura" class="btn btn-primary active" onclick="location.href='@Url.Action("Create", "DETALLES")'" />
+
+
+</p>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                <label>Fecha</label>
+            </th>
+
+            <th>
+                <label>Número de Factura</label>
+            </th>
+
+            <th>
+                <label>Nombre del Cliente</label>
+            </th>
+
+            <th>
+                <label>Total</label>
+            </th>
+
+            <th>
+                <label>Acciones</label>
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th scope="row">
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </th>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroFactura)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCliente)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+
+            <td>
+
+                <button type="button" value="Editar" class="btn btn-primary active fas fa-edit" onclick="location.href='@Url.Action("Edit", "FACTURAS", new { id = item.idFactura })'"> </button>
+                <button type="button" class="btn btn-success active far fa-eye" onclick="location.href='@Url.Action("Details", "FACTURAS", new { id = item.idFactura })'"></button>
+                <button type="button" value="Eliminar" class=" btn btn-warning active fas fa-trash-alt" onclick="location.href='@Url.Action("Delete", "FACTURAS", new { id = item.idFactura })'"></button>
+                <button type="button" class=" btn btn-info active fas fa-plus-square" onclick="location.href='@Url.Action("CreateById", "DETALLES", new { id = item.idFactura })'" />
+      
+
+            </td>
+        </tr>
+        }
+    </tbody>
+
+</table>

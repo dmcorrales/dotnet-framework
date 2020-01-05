@@ -1,0 +1,118 @@
+﻿@model CRUD_MVC.Models.FACTURAS
+@using CRUD_MVC.Models;
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles de factura</h2>
+
+<div>
+    <h4>FACTURAS</h4>
+    <hr />
+    <div class="col-md-15">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"> @Html.DisplayNameFor(model => model.NumeroFactura)</th>
+                            <td> @Html.DisplayFor(model => model.NumeroFactura)</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">@Html.DisplayNameFor(model => model.Fecha)</th>
+                            <td> @Html.DisplayFor(model => model.Fecha)</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">@Html.DisplayNameFor(model => model.TipoDePago)</th>
+                            <td> @Html.DisplayFor(model => model.TipoDePago)</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"> @Html.DisplayNameFor(model => model.DocumentoCliente)</th>
+                            <td>@Html.DisplayFor(model => model.DocumentoCliente)</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"> @Html.DisplayNameFor(model => model.NombreCliente)</th>
+                            <td>@Html.DisplayFor(model => model.NombreCliente)</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"> @Html.DisplayNameFor(model => model.SubTotal)</th>
+                            <td>@Html.DisplayFor(model => model.SubTotal)</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"> @Html.DisplayNameFor(model => model.Descuento)</th>
+                            <td>@Html.DisplayFor(model => model.Descuento)%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"> @Html.DisplayNameFor(model => model.IVA)</th>
+                            <td>@Html.DisplayFor(model => model.IVA)%</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"> @Html.DisplayNameFor(model => model.TotalDescuento)</th>
+                            <td>@Html.DisplayFor(model => model.TotalDescuento)</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"> @Html.DisplayNameFor(model => model.TotalImpuesto)</th>
+                            <td>@Html.DisplayFor(model => model.TotalImpuesto)</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"> @Html.DisplayNameFor(model => model.Total)</th>
+                            <td>@Html.DisplayFor(model => model.Total)</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-4">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio Unitario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        @foreach (var d in (IList<DETALLES>)ViewData["listadoDetalles"])
+                        {
+  
+                            <tr>
+                                <td>@d.PRODUCTOS.Producto</td>
+                                <td>@d.Cantidad</td>
+                                <td>@d.PrecioUnitario</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    
+
+
+
+</div>
+<p>
+    <input type="button" value="Editar factura" class="btn btn-primary active" onclick="location.href='@Url.Action("Edit", "FACTURAS", new { id = Model.idFactura })'" />
+    <input type="button" value="Volver a la lista" class="btn btn-warning active" onclick="location.href='@Url.Action("Index", "FACTURAS")'" />
+
+</p>

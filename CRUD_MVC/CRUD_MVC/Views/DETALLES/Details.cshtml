@@ -1,0 +1,51 @@
+﻿@model CRUD_MVC.Models.DETALLES
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DETALLES</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioUnitario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioUnitario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FACTURAS.TipoDePago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FACTURAS.TipoDePago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCTOS.Producto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCTOS.Producto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idDetalle }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
